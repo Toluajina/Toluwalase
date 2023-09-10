@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>My Profile</title>
+  </head>
+  <body>
+    <!-- Slack Display Picture -->
+    <div class="profile">
+      <div class="image">
+        <img
+          src="image/My-profile-picture.jpg"
+          alt="Toluwalase Ajina"
+          data-testid="slackDisplayImage"
+        />
+      </div>
+
+      <!-- Slack Name -->
+      <div class="details">
+        <div>
+          <strong>Name: </strong>
+          <span data-testid="slackUserName"> Toluwalase Ajina</span>
+        </div>
+
+        <!-- Current Day of the Week -->
+        <div>
+          <strong>Date: </strong>
+          <span id="date" data-testid="currentDayOfTheWeek"> </span>
+        </div>
+
+        <!-- Current UTC Time -->
+        <div>
+          <strong>Time: </strong>
+          <span id="time" data-testid="currentUTCTime"> </span>
+        </div>
+
+        <!-- Track -->
+        <div>
+          <strong>Track:</strong>
+          <span id="track" data-testid="myTrack">Frontend </span>
+        </div>
+
+        <!-- GitHub URL -->
+        <div>
+          <strong>GitHub Repository:</strong>
+          <a
+            href="https://github.com/michael23e/hng-projects.git"
+            class="num"
+            id="nigeria-time"
+            data-testid="“githubURL”"
+            >First HNG Project
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Function to update the current day of the week in words
+      function updateDayInWords() {
+        const dayWordsElement = document.getElementById("date");
+        const currentDate = new Date();
+        const options = { weekday: "long" };
+        const dayInWords = currentDate.toLocaleDateString("en-US", options);
+        dayWordsElement.textContent = dayInWords;
+      }
+
+      // Function to update the current UTC time in milliseconds
+      function updateUTCTimeInMilliseconds() {
+        const utcTimeMSElement = document.getElementById("time");
+        const currentUTCTimeMS = new Date().getTime();
+        utcTimeMSElement.textContent = currentUTCTimeMS;
+      }
+
+      // Update the day in words and UTC time in milliseconds initially and then refresh them every second
+      updateDayInWords();
+      updateUTCTimeInMilliseconds();
+      setInterval(updateDayInWords, 1000);
+      setInterval(updateUTCTimeInMilliseconds, 1000);
+    </script>
+  </body>
+</html>
